@@ -1,0 +1,428 @@
+<div class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-2xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+    
+    <!-- Header with Progress -->
+    <div class="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold text-white">Create Account</h2>
+        <p class="mt-2 text-indigo-100">Join our food platform community</p>
+      </div>
+      
+      <!-- Progress Steps -->
+      <div class="mt-6">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center w-full">
+            <div class="flex items-center relative">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold"
+                   [class.bg-white]="currentStep >= 1"
+                   [class.text-indigo-600]="currentStep >= 1"
+                   [class.bg-indigo-300]="currentStep < 1"
+                   [class.text-white]="currentStep < 1">
+                1
+              </div>
+              <span class="ml-2 text-sm font-medium text-white">Basic Info</span>
+            </div>
+            <div class="flex-1 mx-4 h-1 rounded"
+                 [class.bg-white]="currentStep >= 2"
+                 [class.bg-indigo-300]="currentStep < 2"></div>
+            
+            <div class="flex items-center relative">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold"
+                   [class.bg-white]="currentStep >= 2"
+                   [class.text-indigo-600]="currentStep >= 2"
+                   [class.bg-indigo-300]="currentStep < 2"
+                   [class.text-white]="currentStep < 2">
+                2
+              </div>
+              <span class="ml-2 text-sm font-medium text-white">Security</span>
+            </div>
+            <div class="flex-1 mx-4 h-1 rounded"
+                 [class.bg-white]="currentStep >= 3"
+                 [class.bg-indigo-300]="currentStep < 3"></div>
+            
+            <div class="flex items-center relative">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold"
+                   [class.bg-white]="currentStep >= 3"
+                   [class.text-indigo-600]="currentStep >= 3"
+                   [class.bg-indigo-300]="currentStep < 3"
+                   [class.text-white]="currentStep < 3">
+                3
+              </div>
+              <span class="ml-2 text-sm font-medium text-white">Additional</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Content -->
+    <div class="px-6 py-8">
+      <!-- Error & Success Messages -->
+      <div *ngIf="error" class="mb-4 bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-red-600">{{ error }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="success" class="mb-4 bg-green-50 border-l-4 border-green-500 p-4 rounded-md">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-green-600">{{ success }}</p>
+          </div>
+        </div>
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Step 1: Basic Information -->
+        <div *ngIf="currentStep === 1" class="space-y-6">
+          <div>
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Personal Information</h3>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              
+              <!-- First Name -->
+              <div>
+                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">
+                  First Name <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  formControlName="firstName"
+                  class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  [class.border-red-500]="submitted && f['firstName'].errors"
+                  placeholder="John"
+                >
+                <div *ngIf="submitted && f['firstName'].errors" class="mt-1 text-sm text-red-600">
+                  <div *ngIf="f['firstName'].errors['required']">First name is required</div>
+                  <div *ngIf="f['firstName'].errors['minlength']">Minimum 2 characters</div>
+                </div>
+              </div>
+
+              <!-- Last Name -->
+              <div>
+                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">
+                  Last Name <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  formControlName="lastName"
+                  class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  [class.border-red-500]="submitted && f['lastName'].errors"
+                  placeholder="Doe"
+                >
+                <div *ngIf="submitted && f['lastName'].errors" class="mt-1 text-sm text-red-600">
+                  <div *ngIf="f['lastName'].errors['required']">Last name is required</div>
+                  <div *ngIf="f['lastName'].errors['minlength']">Minimum 2 characters</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+              Email Address <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              [class.border-red-500]="submitted && f['email'].errors"
+              placeholder="john.doe@example.com"
+            >
+            <div *ngIf="submitted && f['email'].errors" class="mt-1 text-sm text-red-600">
+              <div *ngIf="f['email'].errors['required']">Email is required</div>
+              <div *ngIf="f['email'].errors['email']">Please enter a valid email</div>
+            </div>
+          </div>
+
+          <!-- Phone Number -->
+          <div>
+            <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">
+              Phone Number <span class="text-red-500">*</span>
+            </label>
+            <div class="flex">
+              <span class="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                +91
+              </span>
+              <input
+                type="tel"
+                id="phoneNumber"
+                formControlName="phoneNumber"
+                class="flex-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-r-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                [class.border-red-500]="submitted && f['phoneNumber'].errors"
+                placeholder="9876543210"
+              >
+            </div>
+            <div *ngIf="submitted && f['phoneNumber'].errors" class="mt-1 text-sm text-red-600">
+              <div *ngIf="f['phoneNumber'].errors['required']">Phone number is required</div>
+              <div *ngIf="f['phoneNumber'].errors['pattern']">Please enter a valid 10-digit number</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Security -->
+        <div *ngIf="currentStep === 2" class="space-y-6">
+          <div>
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Account Security</h3>
+            
+            <!-- Password -->
+            <div class="mb-4">
+              <label for="password" class="block text-sm font-medium text-gray-700 mb-1">
+                Password <span class="text-red-500">*</span>
+              </label>
+              <div class="relative">
+                <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  id="password"
+                  formControlName="password"
+                  class="appearance-none block w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  [class.border-red-500]="submitted && (f['password'].errors || registerForm.errors?.['passwordMismatch'])"
+                  placeholder="••••••••"
+                >
+                <button
+                  type="button"
+                  class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  (click)="togglePasswordVisibility()"
+                >
+                  <svg *ngIf="!showPassword" class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                  <svg *ngIf="showPassword" class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
+                  </svg>
+                </button>
+              </div>
+              
+              <!-- Password Strength Meter -->
+              <div class="mt-2" *ngIf="f['password'].value">
+                <div class="flex items-center">
+                  <div class="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div [class]="getPasswordStrength().color" 
+                         [style.width.%]="(getPasswordStrength().score / 5) * 100"
+                         class="h-full transition-all duration-300"></div>
+                  </div>
+                  <span class="ml-2 text-xs font-medium text-gray-600">
+                    {{ getPasswordStrength().label }}
+                  </span>
+                </div>
+                <p class="mt-1 text-xs text-gray-500">
+                  Use at least 8 characters with uppercase, lowercase, number & special character
+                </p>
+              </div>
+              
+              <div *ngIf="submitted && f['password'].errors" class="mt-1 text-sm text-red-600">
+                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                <div *ngIf="f['password'].errors['minlength']">Minimum 8 characters required</div>
+                <div *ngIf="f['password'].errors['pattern']">Password must contain uppercase, lowercase, number and special character</div>
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-4">
+              <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">
+                Confirm Password <span class="text-red-500">*</span>
+              </label>
+              <div class="relative">
+                <input
+                  [type]="showConfirmPassword ? 'text' : 'password'"
+                  id="confirmPassword"
+                  formControlName="confirmPassword"
+                  class="appearance-none block w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  [class.border-red-500]="submitted && (f['confirmPassword'].errors || registerForm.errors?.['passwordMismatch'])"
+                  placeholder="••••••••"
+                >
+                <button
+                  type="button"
+                  class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  (click)="toggleConfirmPasswordVisibility()"
+                >
+                  <svg *ngIf="!showConfirmPassword" class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                  <svg *ngIf="showConfirmPassword" class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
+                  </svg>
+                </button>
+              </div>
+              <div *ngIf="submitted && registerForm.errors?.['passwordMismatch']" class="mt-1 text-sm text-red-600">
+                Passwords do not match
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Additional Information -->
+        <div *ngIf="currentStep === 3" class="space-y-6">
+          <div>
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Additional Information</h3>
+            
+            <!-- Role Selection -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-3">
+                I want to join as <span class="text-red-500">*</span>
+              </label>
+              <div class="grid grid-cols-2 gap-4">
+                <button
+                  type="button"
+                  (click)="registerForm.patchValue({role: UserRole.Customer})"
+                  class="p-4 border-2 rounded-lg text-center transition-all duration-200"
+                  [class.border-indigo-500]="f['role'].value === UserRole.Customer"
+                  [class.border-gray-200]="f['role'].value !== UserRole.Customer"
+                  [class.bg-indigo-50]="f['role'].value === UserRole.Customer"
+                >
+                  <svg class="h-8 w-8 mx-auto mb-2" [class.text-indigo-600]="f['role'].value === UserRole.Customer" [class.text-gray-400]="f['role'].value !== UserRole.Customer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                  </svg>
+                  <span class="block font-medium" [class.text-indigo-600]="f['role'].value === UserRole.Customer" [class.text-gray-900]="f['role'].value !== UserRole.Customer">Customer</span>
+                  <span class="text-xs text-gray-500">Order & enjoy food</span>
+                </button>
+
+                <button
+                  type="button"
+                  (click)="registerForm.patchValue({role: UserRole.Seller})"
+                  class="p-4 border-2 rounded-lg text-center transition-all duration-200"
+                  [class.border-indigo-500]="f['role'].value === UserRole.Seller"
+                  [class.border-gray-200]="f['role'].value !== UserRole.Seller"
+                  [class.bg-indigo-50]="f['role'].value === UserRole.Seller"
+                >
+                  <svg class="h-8 w-8 mx-auto mb-2" [class.text-indigo-600]="f['role'].value === UserRole.Seller" [class.text-gray-400]="f['role'].value !== UserRole.Seller" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                  </svg>
+                  <span class="block font-medium" [class.text-indigo-600]="f['role'].value === UserRole.Seller" [class.text-gray-900]="f['role'].value !== UserRole.Seller">Seller</span>
+                  <span class="text-xs text-gray-500">Sell your products</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Optional Fields -->
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <!-- Gender -->
+              <div>
+                <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">
+                  Gender (Optional)
+                </label>
+                <select
+                  id="gender"
+                  formControlName="gender"
+                  class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option value="">Prefer not to say</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- Date of Birth -->
+              <div>
+                <label for="dateOfBirth" class="block text-sm font-medium text-gray-700 mb-1">
+                  Date of Birth (Optional)
+                </label>
+                <input
+                  type="date"
+                  id="dateOfBirth"
+                  formControlName="dateOfBirth"
+                  class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                >
+              </div>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="mt-6">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input
+                    type="checkbox"
+                    id="acceptTerms"
+                    formControlName="acceptTerms"
+                    class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                  >
+                </div>
+                <div class="ml-3">
+                  <label for="acceptTerms" class="text-sm text-gray-700">
+                    I agree to the <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Terms of Service</a> and <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Privacy Policy</a> <span class="text-red-500">*</span>
+                  </label>
+                  <div *ngIf="submitted && f['acceptTerms'].errors" class="mt-1 text-sm text-red-600">
+                    You must accept the terms and conditions
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="mt-8 flex justify-between">
+          <button
+            type="button"
+            *ngIf="currentStep > 1"
+            (click)="previousStep()"
+            class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Previous
+          </button>
+
+          <button
+            type="button"
+            *ngIf="currentStep < totalSteps"
+            (click)="nextStep()"
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            [disabled]="!validateCurrentStep()"
+          >
+            Next
+            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+
+          <button
+            *ngIf="currentStep === totalSteps"
+            type="submit"
+            [disabled]="loading"
+            class="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+          >
+            <span *ngIf="!loading">Create Account</span>
+            <span *ngIf="loading" class="flex items-center">
+              <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Creating...
+            </span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Login Link -->
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600">
+          Already have an account?
+          <a routerLink="/auth/login" class="font-medium text-indigo-600 hover:text-indigo-500">
+            Sign in
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

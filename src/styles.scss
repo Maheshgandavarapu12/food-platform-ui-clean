@@ -1,1 +1,553 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* Import Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles below */
+@layer base {
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/assets/fonts/Roboto-Regular.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-gray-50 font-sans;
+    font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-normal;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  a {
+    @apply no-underline text-inherit;
+  }
+
+  ul {
+    @apply list-none p-0;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+}
+
+@layer components {
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium py-2 px-4 rounded-lg 
+           hover:from-indigo-700 hover:to-purple-700 
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 
+           transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-gray-700 font-medium py-2 px-4 border border-gray-300 rounded-lg 
+           hover:bg-gray-50 
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 
+           transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  /* Form Input Styles */
+  .input-field {
+    @apply appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg 
+           placeholder-gray-400 
+           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 
+           transition duration-150 ease-in-out;
+  }
+
+  .input-field.ng-invalid.ng-touched {
+    @apply border-red-500 focus:ring-red-500;
+  }
+
+  .input-field.ng-valid.ng-touched {
+    @apply border-green-500 focus:ring-green-500;
+  }
+  
+  /* Card Styles */
+  .card {
+    @apply bg-white rounded-2xl shadow-xl overflow-hidden;
+  }
+  
+  /* Message Styles */
+  .error-message {
+    @apply mt-1 text-sm text-red-600;
+  }
+  
+  .success-message {
+    @apply mt-1 text-sm text-green-600;
+  }
+
+  /* Login Container */
+  .login-container {
+    @apply flex items-center justify-center min-h-[80vh] p-6;
+  }
+
+  .login-form {
+    @apply w-full max-w-[420px] bg-white rounded-lg p-6;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  }
+
+  .login-form h2 {
+    @apply text-2xl font-normal mb-4;
+  }
+
+  .login-form label {
+    @apply block mb-3;
+  }
+
+  .password-wrapper {
+    @apply flex gap-2 items-center;
+  }
+
+  .password-wrapper .toggle {
+    @apply bg-transparent border-none text-primary-600 cursor-pointer;
+  }
+
+  .remember {
+    @apply flex items-center gap-2 mb-3;
+  }
+
+  .submit {
+    @apply w-full py-2.5 px-4 border-none rounded bg-primary-600 text-white cursor-pointer
+           hover:bg-primary-700 transition-colors;
+  }
+
+  .error {
+    @apply text-red-600 mb-3;
+  }
+
+  .footnote {
+    @apply mt-3 text-center;
+  }
+
+  /* Register Component */
+  .register-container {
+    @apply min-h-screen;
+    background: linear-gradient(135deg, #e0e7ff 0%, #fff 50%, #f3e8ff 100%);
+  }
+
+  .register-form {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .progress-step {
+    @apply transition-all duration-300;
+  }
+
+  .progress-step.active {
+    @apply bg-white text-indigo-600;
+  }
+
+  /* Password strength meter */
+  .strength-very-weak { @apply bg-red-500; }
+  .strength-weak { @apply bg-orange-500; }
+  .strength-fair { @apply bg-yellow-500; }
+  .strength-good { @apply bg-blue-500; }
+  .strength-strong { @apply bg-green-500; }
+  .strength-very-strong { @apply bg-green-600; }
+}
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+}
+
+/* Global styles that don't fit in layers */
+:focus {
+  @apply outline-none ring-2 ring-indigo-500 ring-offset-2;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+/* Remove spinner from number inputs */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Sidebar styles (if needed) */
+#sidebar {
+  @apply fixed top-0 left-0 bottom-0 right-0 bg-gray-100 z-[999];
+}
+
+#sidebar ul {
+  @apply list-none p-0;
+}
+
+#sidebar li {
+  @apply mb-2.5;
+}
+
+#sidebar a {
+  @apply block p-2.5 no-underline text-primary-600 border border-primary-600 rounded 
+         transition-all duration-300;
+}
+
+#sidebar a:hover {
+  @apply bg-primary-700 text-white;
+}
+
+#sidebar a.active {
+  @apply bg-teal-600 text-white border-teal-600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .max-w-2xl {
+    max-width: 100%;
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .px-6 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+/* Your existing styles from the image */
+// @font-face {
+//   font-family: 'Roboto';
+//   src: url('Roboto-Regular.ttf') format('truetype');
+// }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/assets/fonts/Roboto-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+body {
+  font-family: 'Roboto';
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+p {
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input[type="text"], input[type="password"] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  resize: none;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #f8f9fa;
+  z-index: 999;
+}
+
+#sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#sidebar li {
+  margin-bottom: 10px;
+}
+
+#sidebar a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+#sidebar a:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+#sidebar a.active {
+  background-color: #009688;
+  color: #fff;
+}
+
+#sidebar a.active:hover {
+  background-color: #00897b;
+  color: #fff;
+}
+
+#sidebar a.active:focus {
+  outline: none;
+}
+
+/* Add your component-specific styles from login and register components */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 24px;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.login-form h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.4rem;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.password-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.password-wrapper .toggle {
+  background: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.submit {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.error {
+  color: #b00020;
+  margin-bottom: 12px;
+}
+
+.footnote {
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Register Component Styles */
+.min-h-screen {
+  background: linear-gradient(135deg, #e0e7ff 0%, #fff 50%, #f3e8ff 100%);
+}
+
+.register-form {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.progress-step {
+  transition: all 0.3s ease;
+}
+
+.progress-step.active {
+  background-color: white;
+  color: #4f46e5;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+button {
+  transition: all 0.2s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+.border-red-500:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Password strength meter colors */
+.bg-red-500 {
+  background-color: #ef4444;
+}
+
+.bg-orange-500 {
+  background-color: #f97316;
+}
+
+.bg-yellow-500 {
+  background-color: #eab308;
+}
+
+.bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+.bg-green-500 {
+  background-color: #22c55e;
+}
+
+.bg-green-600 {
+  background-color: #16a34a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .max-w-2xl {
+    max-width: 100%;
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .px-6 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

@@ -1,0 +1,106 @@
+// Register Component Styles
+
+.min-h-screen {
+  background: linear-gradient(135deg, #e0e7ff 0%, #fff 50%, #f3e8ff 100%);
+}
+
+.register-form {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Progress bar animation
+.progress-step {
+  transition: all 0.3s ease;
+  
+  &.active {
+    background-color: white;
+    color: #4f46e5;
+  }
+}
+
+// Form input focus styles
+input:focus,
+select:focus,
+textarea:focus {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+// Button hover effects
+button {
+  transition: all 0.2s ease;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    transform: translateY(-1px);
+  }
+}
+
+// Error states
+.border-red-500 {
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
+}
+
+// Password strength meter colors
+.bg-red-500 {
+  background-color: #ef4444;
+}
+
+.bg-orange-500 {
+  background-color: #f97316;
+}
+
+.bg-yellow-500 {
+  background-color: #eab308;
+}
+
+.bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+.bg-green-500 {
+  background-color: #22c55e;
+}
+
+.bg-green-600 {
+  background-color: #16a34a;
+}
+
+// Responsive adjustments
+@media (max-width: 640px) {
+  .max-w-2xl {
+    max-width: 100%;
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .px-6 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
