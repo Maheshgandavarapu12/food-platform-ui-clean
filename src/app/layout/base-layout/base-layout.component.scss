@@ -1,0 +1,78 @@
+/* Base Layout Styles */
+
+:host {
+  display: block;
+  height: 100vh;
+}
+
+/* Sidebar animations */
+aside {
+  transition: width 0.3s ease-in-out;
+
+  &.w-64 {
+    width: 16rem;
+  }
+
+  &.w-20 {
+    width: 5rem;
+  }
+}
+
+/* Navigation links */
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* Profile menu animation */
+.z-50 {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  aside {
+    position: absolute;
+    height: 100%;
+    z-index: 40;
+
+    &.w-64 {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  main {
+    width: 100%;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+
+  &:hover {
+    background: #94a3b8;
+  }
+}

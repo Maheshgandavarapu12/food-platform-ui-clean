@@ -1,0 +1,39 @@
+/* User Layout Styles */
+
+:host {
+  display: block;
+}
+
+/* Custom sidebar styling for user nav */
+nav {
+  padding: 0.5rem;
+}
+
+a {
+  transition: all 0.2s ease;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .group-hover\:text-indigo-500 {
+    transition: color 0.2s ease;
+  }
+}
+
+/* Badge styling */
+.rounded-full {
+  border-radius: 9999px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.25rem;
+  }
+
+  a {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+}
