@@ -5,9 +5,10 @@ import { AuthService } from '../../../core/services/auth.service';
 import { UserRole, Gender, AuthResponse } from '../../../core/models/auth.models';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss'],
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;

@@ -1,21 +1,58 @@
-<div class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-xl">
+<div class="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+
+  <!-- LEFT SIDE (BRANDING) -->
+  <div class="hidden lg:flex flex-col items-center justify-center bg-gradient-to-br from-primary-700 to-primary-900 text-white p-10">
+
+    <div class="text-center">
+      
+      <!-- Logo -->
+      <div class="h-20 w-20 bg-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
+        <svg class="h-12 w-12 text-white" viewBox="0 0 64 64" fill="none">
+          <path d="M6 10h6l6 28h28l6-20H18" stroke="currentColor" stroke-width="3"/>
+          <circle cx="26" cy="50" r="4" fill="#8B5E3C"/>
+          <circle cx="46" cy="50" r="4" fill="#8B5E3C"/>
+          <path d="M34 14c8 0 14 6 14 14-8 0-14-6-14-14z" fill="#4CAF50"/>
+          <path d="M34 14c4 4 8 8 14 14" stroke="#ffffff" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <h1 class="text-4xl font-bold mb-4">NativoKart</h1>
+      <p class="text-lg opacity-90">
+        Connecting Villages to Cities <br>
+        Natural • Homemade • Traditional
+      </p>
+
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE (YOUR EXISTING LOGIN CODE) -->
+  <div class="flex items-center justify-center bg-primary-50 py-12 px-4">
+
+    <!-- 👇 KEEP YOUR OLD CARD SAME -->
+    <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-xl">
+
+      <!-- COPY YOUR EXISTING LOGIN CONTENT HERE -->
     
     <!-- Logo and Header -->
     <div>
       <div class="flex justify-center">
-        <div class="h-16 w-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center">
-          <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-          </svg>
+        <div class="h-16 w-16 bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl flex items-center justify-center">
+         <!-- Leaf Logo -->
+     <svg class="h-10 w-10 text-white" viewBox="0 0 64 64" fill="none">
+      <path d="M6 10h6l6 28h28l6-20H18" stroke="currentColor" stroke-width="3"/>
+      <circle cx="26" cy="50" r="4" fill="#8B5E3C"/>
+      <circle cx="46" cy="50" r="4" fill="#8B5E3C"/>
+      <path d="M34 14c8 0 14 6 14 14-8 0-14-6-14-14z" fill="#4CAF50"/>
+      <path d="M34 14c4 4 8 8 14 14" stroke="#ffffff" stroke-width="2"/>
+    </svg>
         </div>
       </div>
       <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Welcome Back
-      </h2>
+  Welcome to NativoKart
+</h2>
       <p class="mt-2 text-center text-sm text-gray-600">
-        Sign in to your account
-      </p>
+  Connecting Villages to Cities 
+</p>
     </div>
 
     <!-- Error Message -->
@@ -43,7 +80,7 @@
           </label>
           <div class="relative">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="h-5 w-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m12 0a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h8a4 4 0 014 4v4z"></path>
               </svg>
             </div>
@@ -51,7 +88,7 @@
               type="email"
               id="email"
               formControlName="email"
-              class="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
+              class="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition duration-150 ease-in-out"
               [class.border-red-500]="submitted && f['email'].errors"
               placeholder="you@example.com"
             >
@@ -69,7 +106,7 @@
           </label>
           <div class="relative">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="h-5 w-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
               </svg>
             </div>
@@ -77,22 +114,22 @@
               [type]="showPassword ? 'text' : 'password'"
               id="password"
               formControlName="password"
-              class="appearance-none block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
+              class="appearance-none block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition duration-150 ease-in-out"
               [class.border-red-500]="submitted && f['password'].errors"
               placeholder="••••••••"
             >
             <button
               type="button"
-              class="absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none focus:ring-0 focus:bg-transparent"
               (click)="togglePasswordVisibility()"
             >
               <!-- Eye Icon (when password hidden) -->
-              <svg *ngIf="!showPassword" class="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg *ngIf="!showPassword" class="h-5 w-5 text-primary-500 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
               </svg>
               <!-- Eye Off Icon (when password visible) -->
-              <svg *ngIf="showPassword" class="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg *ngIf="showPassword" class="h-5 w-5 text-primary-500 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
               </svg>
             </button>
@@ -110,14 +147,14 @@
               type="checkbox"
               id="rememberMe"
               formControlName="rememberMe"
-              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
             >
             <label for="rememberMe" class="ml-2 block text-sm text-gray-900">
               Remember me
             </label>
           </div>
           <div class="text-sm">
-            <a routerLink="/auth/forgot-password" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out">
+            <a routerLink="/auth/forgot-password" class="font-medium text-primary-600 hover:text-primary-500 transition duration-150 ease-in-out">
               Forgot your password?
             </a>
           </div>
@@ -129,10 +166,10 @@
         <button
           type="submit"
           [disabled]="loading"
-          class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+          class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-            <svg class="h-5 w-5 text-indigo-300 group-hover:text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="h-5 w-5 text-primary-200 group-hover:text-primary-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
             </svg>
           </span>
@@ -151,7 +188,7 @@
       <div class="text-center mt-4">
         <p class="text-sm text-gray-600">
           Don't have an account?
-          <a routerLink="/auth/register" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out">
+          <a routerLink="/auth/register" class="font-medium text-primary-600 hover:text-primary-500 transition duration-150 ease-in-out">
             Sign up now
           </a>
         </p>
@@ -187,5 +224,11 @@
         </button>
       </div>
     </div>
+ 
+
+      <!-- (NO CHANGE INSIDE FORM) -->
+
+   
+
   </div>
 </div>

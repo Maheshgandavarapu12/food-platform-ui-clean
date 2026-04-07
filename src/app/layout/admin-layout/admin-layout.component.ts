@@ -3,9 +3,10 @@ import { AuthService } from '../../core/services/auth.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-admin-layout',
-  templateUrl: './admin-layout.component.html',
-  styleUrls: ['./admin-layout.component.scss']
+    selector: 'app-admin-layout',
+    templateUrl: './admin-layout.component.html',
+    styleUrls: ['./admin-layout.component.scss'],
+    standalone: false
 })
 export class AdminLayoutComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();

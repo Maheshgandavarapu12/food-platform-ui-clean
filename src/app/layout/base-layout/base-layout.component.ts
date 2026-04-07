@@ -5,9 +5,10 @@ import { User, UserRole } from '../../core/models/auth.models';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-base-layout',
-  templateUrl: './base-layout.component.html',
-  styleUrls: ['./base-layout.component.scss']
+    selector: 'app-base-layout',
+    templateUrl: './base-layout.component.html',
+    styleUrls: ['./base-layout.component.scss'],
+    standalone: false
 })
 export class BaseLayoutComponent implements OnInit, OnDestroy {
   currentUser: User | null = null;

@@ -3,9 +3,10 @@ import { AuthService } from '../../core/services/auth.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-user-layout',
-  templateUrl: './user-layout.component.html',
-  styleUrls: ['./user-layout.component.scss']
+    selector: 'app-user-layout',
+    templateUrl: './user-layout.component.html',
+    styleUrls: ['./user-layout.component.scss'],
+    standalone: false
 })
 export class UserLayoutComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
