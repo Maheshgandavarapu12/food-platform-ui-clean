@@ -1,0 +1,41 @@
+body {
+    background: linear-gradient(135deg, #e8f5e9, #ffffff);
+    height: 100vh;
+}
+
+.login-card {
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.login-btn {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    border: none;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #198754;
+    transform: scale(0.98);
+    transition: all 0.3s ease;
+}
+
+.input-group-text {
+    background-color: #e8f5e9;
+    border: none;
+}
+
+.form-control:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.eye-icon,
+.rememberMe {
+    cursor: pointer;
+}
+
+.login-icon {
+    position: absolute;
+    left: 32px;
+}
