@@ -1,17 +1,16 @@
-export interface apiResponse {
-    statusCode: number,
-    data: any,
-    statusMessage: string
+export interface Item {
+  id: number;
+  itemName: string;
+  categoryName: string;
+  price: number;
+  quantity: number;
+  totalStock: number;
+  isOnSale: number;
+  imageUri: string;
+  sellerId: string;
+  categoryId: number;
 }
-
-export interface items {
-    id?: string,
-    itemName?: string,
-    categoryId?: string,
-    categoryName?: string,
-    price?: number,
-    Discount?: number,
-    Quantity?: number,
-    TotalStock?: number,
-    IsOnSale?: boolean,
+export interface ItemResponse {
+  data: Item[];
+  statusCode: number;
 }

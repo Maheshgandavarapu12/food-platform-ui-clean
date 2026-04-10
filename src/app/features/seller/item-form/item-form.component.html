@@ -1,1 +1,65 @@
-<p>item-form works!</p>
+<div class="noFocus">
+  <h2 mat-dialog-title>Item Form</h2>
+
+  <mat-dialog-content>
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+
+      <mat-form-field>
+        <mat-label>Item Name</mat-label>
+        <input matInput formControlName="itemName">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option [value]="1">Food</mat-option>
+          <mat-option [value]="2">Snacks</mat-option>
+          <mat-option [value]="3">Beverages</mat-option>
+          <mat-option [value]="4">Juices</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="price">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Quantity</mat-label>
+        <input matInput formControlName="quantity">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Total Stock</mat-label>
+        <input matInput formControlName="totalStock">
+      </mat-form-field>
+
+      @if(data){
+      <mat-form-field>
+        <mat-label>Is On Sale</mat-label>
+        <mat-select formControlName="isOnSale">
+          <mat-option [value]="true">Yes</mat-option>
+          <mat-option [value]="false">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+      }
+
+
+      <div style="display: flex; gap: 10px; margin-top: 20px;">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
+          <span>
+            @if(isLoading){Saving...}
+            @else{Submit}</span>
+          <mat-progress-spinner *ngIf="isLoading" diameter="20" mode="indeterminate" color="warn"
+            style="vertical-align: middle; margin-left: 8px;">
+          </mat-progress-spinner>
+        </button>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+
+  </mat-dialog-actions>
+</div>
