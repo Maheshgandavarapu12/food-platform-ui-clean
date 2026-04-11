@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +21,8 @@ export class LoginComponent{
 
   formBuilder = inject(FormBuilder);
   authService = inject(AuthService);
+  router = inject(Router);
+
   constructor() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -38,6 +40,7 @@ export class LoginComponent{
     this.authService.login(this.loginForm.value).subscribe({
       next: () => {
         this.isLoading = false;
+        this.router.navigate(['/seller/items'])
       },
       error: (error) => {
         this.isLoading = false;
