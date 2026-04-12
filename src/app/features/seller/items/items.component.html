@@ -3,7 +3,18 @@
     <button matButton="filled" class="bg-primary-50" (click)="createItem()">Create Item</button>
   </div>
 
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 noFocus">
+  <app-tabel [columns]="columns" [data]="data" [actionTemplate]="actionTpl">
+  </app-tabel>
+
+  <ng-template #actionTpl let-row>
+    <div>
+      <mat-icon color="primary" matTooltip="Edit" (click)="editItem(row)">edit</mat-icon>
+      <mat-icon color="warn" matTooltip="Delete" (click)="deleteItem(row.id)">delete</mat-icon>
+    </div>
+  </ng-template>
+
+
+  <!-- <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 noFocus">
 
     <ng-container matColumnDef="itemName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Item Name</th>
@@ -57,5 +68,5 @@
     
   </table>
   <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[1, 2,3]" aria-label="Select page" class="noFocus">
-  </mat-paginator>
+  </mat-paginator> -->
 </div>

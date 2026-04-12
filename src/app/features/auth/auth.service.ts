@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean{
-    return !!this.getSession()
+    return !!this.getAccessToken()
 
   }
 
@@ -65,7 +65,7 @@ export class AuthService {
     localStorage.setItem(this.TOKEN_KEY, response.accessToken);
     localStorage.setItem(this.USER_KEY, JSON.stringify(user));
   }
-  getSession(): string | null{
+  getAccessToken(): string | null{
     if (!this.isBrowser) return null;
     return localStorage.getItem(this.TOKEN_KEY);
   }

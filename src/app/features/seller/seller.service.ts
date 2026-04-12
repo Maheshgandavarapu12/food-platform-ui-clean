@@ -8,7 +8,7 @@ import { Item, ItemResponse } from '../../core/models/seller';
   providedIn: 'root'
 })
 export class SellerService{
-  private baseUrl = `${environment.apiUrl}/auth`;
+  private baseUrl = `${environment.apiUrl}/Items`;
   constructor(private http: HttpClient) { }
 
   getAllItems(): Observable<ItemResponse> {

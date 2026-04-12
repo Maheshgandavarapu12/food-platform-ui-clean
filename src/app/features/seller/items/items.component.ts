@@ -11,15 +11,16 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ItemFormComponent } from '../item-form/item-form.component';
 import Swal from 'sweetalert2';
+import { TabelComponent } from '../../../shared/components/tabel/tabel.component';
 
 const ELEMENT_DATA: Item[] = [
-  { id: 1, itemName: 'John Doe', categoryName: 'Category 1', price: 10.99, quantity: 5, totalStock: 10, isOnSale: 0, imageUri: '', sellerId: 'seller1', categoryId: 1 },
-  { id: 2, itemName: 'Jane Smith', categoryName: 'Category 2', price: 15.99, quantity: 3, totalStock: 5, isOnSale: 1, imageUri: '', sellerId: 'seller2', categoryId: 2 },
-  { id: 3, itemName: 'Mike Johnson', categoryName: 'Category 3', price: 20.99, quantity: 7, totalStock: 10, isOnSale: 0, imageUri: '', sellerId: 'seller3', categoryId: 3 },
+  { id: 1, itemName: 'John Doe', categoryName: 'Category 1', price: 10.99, quantity: 5, totalStock: 10, isOnSale: true, imageUri: '', sellerId: 'seller1', categoryId: 1 },
+  { id: 2, itemName: 'Jane Smith', categoryName: 'Category 2', price: 15.99, quantity: 3, totalStock: 5, isOnSale: true, imageUri: '', sellerId: 'seller2', categoryId: 2 },
+  { id: 3, itemName: 'Mike Johnson', categoryName: 'Category 3', price: 20.99, quantity: 7, totalStock: 10, isOnSale: false, imageUri: '', sellerId: 'seller3', categoryId: 3 },
 ];
 @Component({
   selector: 'app-items',
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatIconModule],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatIconModule, TabelComponent],
   templateUrl: './items.component.html',
   styleUrl: './items.component.scss'
 })
@@ -27,13 +28,26 @@ export class ItemsComponent implements OnInit {
   cols: string[] = ['itemName', 'categoryName', 'price', 'quantity', 'totalStock', 'isOnSale', 'action'];
   isLoading: boolean = false;
   dataSource = new MatTableDataSource<Item>(ELEMENT_DATA);
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) Sort!: MatSort;
-  
+
   sellerService = inject(SellerService);
   dialog = inject(MatDialog);
   toastr = inject(ToastrService);
+
+  columns = [
+    { key: 'id', label: 'ID', hidden: true },
+    { key: 'itemName', label: 'Item Name' },
+    { key: 'categoryName', label: 'Category' },
+    { key: 'price', label: 'Price' },
+    { key: 'quantity', label: 'Quantity' },
+    { key: 'totalStock', label: 'Total Stock' },
+    { key: 'isOnSale', label: 'Is On Sale' },
+    { key: 'actions', label: 'Actions' }
+  ];
+
+  data = ELEMENT_DATA;
 
   ngOnInit(): void {
     this.loadData();
@@ -47,7 +61,7 @@ export class ItemsComponent implements OnInit {
     this.isLoading = true;
     this.sellerService.getAllItems().subscribe({
       next: (data) => {
-        this.dataSource.data = data.data;
+        this.data = data.data;
         this.isLoading = false;
       },
       error: (err) => {
@@ -55,7 +69,7 @@ export class ItemsComponent implements OnInit {
       }
     });
   }
-  createItem(){
+  createItem() {
     const dialogRef = this.dialog.open(ItemFormComponent, {
       width: '400px',
     });
@@ -66,7 +80,7 @@ export class ItemsComponent implements OnInit {
     });
 
   }
-  editItem(item: any){
+  editItem(item: any) {
     const dialogRef = this.dialog.open(ItemFormComponent, {
       width: '400px',
       data: { item }
@@ -78,7 +92,7 @@ export class ItemsComponent implements OnInit {
     });
 
   }
-  deleteItem(itemId: string){
+  deleteItem(itemId: string) {
     Swal.fire({
       title: 'Are you sure?',
       text: 'You will not be able to recover this!',

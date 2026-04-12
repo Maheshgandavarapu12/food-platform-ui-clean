@@ -5,7 +5,7 @@ export interface Item {
   price: number;
   quantity: number;
   totalStock: number;
-  isOnSale: number;
+  isOnSale: boolean;
   imageUri: string;
   sellerId: string;
   categoryId: number;
