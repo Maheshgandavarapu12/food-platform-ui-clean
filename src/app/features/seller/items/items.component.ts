@@ -4,6 +4,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { Item } from '../../../core/models/seller';
 import { MatIconModule } from '@angular/material/icon';
 import { SellerService } from '../seller.service';
@@ -20,7 +21,8 @@ const ELEMENT_DATA: Item[] = [
 ];
 @Component({
   selector: 'app-items',
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatIconModule, TabelComponent],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatIconModule,
+    MatTooltipModule, TabelComponent],
   templateUrl: './items.component.html',
   styleUrl: './items.component.scss'
 })
@@ -99,7 +101,8 @@ export class ItemsComponent implements OnInit {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'Cancel'
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#e74c3c',
     }).then((result) => {
       if (result.isConfirmed) {
         this.sellerService.deleteItem(itemId).subscribe({

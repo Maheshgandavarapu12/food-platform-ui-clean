@@ -46,8 +46,8 @@
 
 
       <div style="display: flex; gap: 10px; margin-top: 20px;">
-        <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
+        <button mat-button mat-dialog-close class="btn-primary">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" class="btn-primary" [disabled]="isLoading">
           <span>
             @if(isLoading){Saving...}
             @else{Submit}</span>

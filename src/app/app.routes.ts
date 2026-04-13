@@ -10,7 +10,7 @@ export const routes: Routes = [
     {
         path: 'seller',
         loadChildren: () => import('./features/seller/seller.routes').then(m => m.sellerRoutes),
-        canActivate:[authGuard]
+        //canActivate:[authGuard]
     },
     { path: '**', redirectTo: 'auth/login' }//here we have to add a 404 page
 ];
