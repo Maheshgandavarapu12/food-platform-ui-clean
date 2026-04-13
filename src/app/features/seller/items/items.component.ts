@@ -1,9 +1,4 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Item } from '../../../core/models/seller';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,25 +9,20 @@ import { ItemFormComponent } from '../item-form/item-form.component';
 import Swal from 'sweetalert2';
 import { TabelComponent } from '../../../shared/components/tabel/tabel.component';
 
-const ELEMENT_DATA: Item[] = [
-  { id: 1, itemName: 'John Doe', categoryName: 'Category 1', price: 10.99, quantity: 5, totalStock: 10, isOnSale: true, imageUri: '', sellerId: 'seller1', categoryId: 1 },
-  { id: 2, itemName: 'Jane Smith', categoryName: 'Category 2', price: 15.99, quantity: 3, totalStock: 5, isOnSale: true, imageUri: '', sellerId: 'seller2', categoryId: 2 },
-  { id: 3, itemName: 'Mike Johnson', categoryName: 'Category 3', price: 20.99, quantity: 7, totalStock: 10, isOnSale: false, imageUri: '', sellerId: 'seller3', categoryId: 3 },
-];
+// const ELEMENT_DATA: Item[] = [
+//   { id: 1, itemName: 'John Doe', categoryName: 'Category 1', price: 10.99, quantity: 5, totalStock: 10, isOnSale: true, imageUri: '', sellerId: 'seller1', categoryId: 1 },
+//   { id: 2, itemName: 'Jane Smith', categoryName: 'Category 2', price: 15.99, quantity: 3, totalStock: 5, isOnSale: true, imageUri: '', sellerId: 'seller2', categoryId: 2 },
+//   { id: 3, itemName: 'Mike Johnson', categoryName: 'Category 3', price: 20.99, quantity: 7, totalStock: 10, isOnSale: false, imageUri: '', sellerId: 'seller3', categoryId: 3 },
+// ];
 @Component({
   selector: 'app-items',
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatIconModule,
-    MatTooltipModule, TabelComponent],
+  imports: [MatIconModule, MatTooltipModule, TabelComponent],
   templateUrl: './items.component.html',
   styleUrl: './items.component.scss'
 })
 export class ItemsComponent implements OnInit {
   cols: string[] = ['itemName', 'categoryName', 'price', 'quantity', 'totalStock', 'isOnSale', 'action'];
   isLoading: boolean = false;
-  dataSource = new MatTableDataSource<Item>(ELEMENT_DATA);
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) Sort!: MatSort;
 
   sellerService = inject(SellerService);
   dialog = inject(MatDialog);
@@ -49,14 +39,10 @@ export class ItemsComponent implements OnInit {
     { key: 'actions', label: 'Actions' }
   ];
 
-  data = ELEMENT_DATA;
+  data: Item[] = [];
 
   ngOnInit(): void {
     this.loadData();
-  }
-  ngAfterViewInit() {
-    this.dataSource.sort = this.Sort;
-    this.dataSource.paginator = this.paginator;
   }
 
   loadData() {

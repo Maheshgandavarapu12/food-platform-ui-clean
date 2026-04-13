@@ -1,0 +1,9 @@
+<app-tabel [columns]="columns" [data]="data" [actionTemplate]="actionTpl">
+</app-tabel>
+
+<ng-template #actionTpl let-row>
+  <mat-select (valueChange)="changeOrderStatus(row.id,$event.value)">
+    <mat-option [value]="1">Accept</mat-option>
+    <mat-option [value]="2">Reject</mat-option>
+  </mat-select>
+</ng-template>
