@@ -27,3 +27,14 @@ export interface Order {
   orderNumber: string;
   orderAddress: string;
 }
+// Transactions
+export interface TransactionResponse {
+  data: Transaction[];
+  statusCode: number;
+}
+
+export interface Transaction {
+  id: number;
+  transactionNumber: string;
+  amount: number;
+}

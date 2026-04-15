@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 noFocus">
+<table mat-table [dataSource]="dataSource" matSort [ngClass]="{ 'mat-elevation-z8': isNoShadow }">
 
     @for (column of columns; track $index) {
     <ng-container [matColumnDef]="column.key">
@@ -26,5 +26,5 @@
     </tr>
 
 </table>
-<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[1, 2,3]" aria-label="Select page" class="noFocus">
+<mat-paginator *ngIf="showPaginator" [length]="100" [pageSize]="10" [pageSizeOptions]="[1, 2,3]" aria-label="Select page" class="noFocus">
 </mat-paginator>

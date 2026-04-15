@@ -17,6 +17,8 @@ export class TabelComponent implements AfterViewInit {
   @Input() columns: any[] = [];
   @Input() data: any[] = [];
   @Input() actionTemplate!: TemplateRef<any>;
+  @Input() isNoShadow: boolean = true;
+  @Input() showPaginator: boolean = true;
 
   dataSource = new MatTableDataSource<any>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;

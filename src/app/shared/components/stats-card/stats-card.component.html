@@ -1,0 +1,8 @@
+<mat-card class="card">
+  <div class="card-header">
+    <span class="title">{{ title }}</span>
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+  </div>
+  <h2 class="count" *ngIf="count">{{ count }}</h2>
+  <ng-content></ng-content>
+</mat-card>

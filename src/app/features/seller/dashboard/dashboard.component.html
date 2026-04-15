@@ -1,1 +1,33 @@
-<p>dashboard works!</p>
+<div class="dashboard p-4 pb-4">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        @for (item of stats; track $index) {
+        <app-stats-card [title]="item.title" [count]="item.count" [icon]="item.icon">
+        </app-stats-card>
+        }
+    </div>
+
+    <div class="pt-4">
+        <app-stats-card [title]="'Recent Orders'" [icon]="'inventory'">
+            <app-tabel [columns]="columns" [data]="data" [isNoShadow]="false" [showPaginator]="false">
+            </app-tabel>
+            <a routerLink="/seller/orders" class="text-right pr-4">click here to see more...</a>
+        </app-stats-card>
+
+    </div>
+
+    <div class="pt-4">
+        <app-stats-card [title]="'Your top selling products'" [icon]="'shopping_bag'">
+            <app-tabel [columns]="columns" [data]="data" [isNoShadow]="false" [showPaginator]="false">
+            </app-tabel>
+            <a routerLink="/seller/items" class="text-right pr-4">click here to see all items...</a>
+        </app-stats-card>
+    </div>
+
+    <div class="pt-4">
+        <app-stats-card [title]="'Recent Transactions'" [icon]="'attach_money'">
+            <app-tabel [columns]="columns" [data]="data" [isNoShadow]="false" [showPaginator]="false">
+            </app-tabel>
+            <a routerLink="/seller/transactions" class="text-right pr-4">click here to see all transactions...</a>
+        </app-stats-card>
+    </div>
+</div>

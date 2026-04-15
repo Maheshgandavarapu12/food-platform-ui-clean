@@ -21,6 +21,10 @@ export const sellerRoutes: Routes = [
             {
                 path: 'orders',
                 loadComponent: () => import('../order/orders/orders.component').then(m => m.OrdersComponent)
+            },
+            {
+                path: 'transactions',
+                loadComponent: () => import('../transaction/transactions/transactions.component').then(m => m.TransactionsComponent)
             }
         ]
     }
